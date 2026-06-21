@@ -83,11 +83,21 @@ Claude helped me to understand what the test called "test_string_secret_is_compa
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+Streamlit basically restarts the whole program on every click. Anything I need it to remember (the score, the target number, etc.) has to go in st.session_state, otherwise it disappears once the script reruns.
+
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+
+I think that this habit of running the code and finding out for yourself what went wrong is a great way to figure out what should be fixed by the programmer and the AI. Indeed, it was important for me to remember that the first step to fix a problem is to find out what is the exact problem.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
+
+Next time I will work with AI, I will make sure to separate the different inquiry in different AI chats to make sure that I can go back to each chats when I need to review some information without having to scroll through irrelevant prompts.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+This project made me realise that writing code with AI is a bit like driving a car. It can make what you want it to do but you need to indicate specifically what you want. For example, you need to be specific about which file and which lines you want to modify and explain the intent behind that modification.
