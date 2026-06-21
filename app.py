@@ -1,25 +1,7 @@
 import random
 import streamlit as st
 
-from logic_utils import check_guess, get_range_for_difficulty, parse_guess      #FIX: Refactored logic into logic_utils.py using agent mode
-
-
-def update_score(current_score: int, outcome: str, attempt_number: int):
-    if outcome == "Win":
-        points = 100 - 10 * (attempt_number + 1)
-        if points < 10:
-            points = 10
-        return current_score + points
-
-    if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
-        return current_score - 5
-
-    if outcome == "Too Low":
-        return current_score - 5
-
-    return current_score
+from logic_utils import check_guess, get_range_for_difficulty, parse_guess, update_score      #FIX: Refactored logic into logic_utils.py using agent mode
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -50,7 +32,7 @@ if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 0
+    st.session_state.attempts = 0   # FIX: was 1, caused off-by-one; 0 gives the full advertised attempt count
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -89,11 +71,11 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    st.session_state.attempts = 0
-    st.session_state.secret = random.randint(low, high)
-    st.session_state.status = "playing"
-    st.session_state.score = 0
-    st.session_state.history = []
+    st.session_state.attempts = 0                          # FIX: match init so restart gives full attempt count
+    st.session_state.secret = random.randint(low, high)    # FIX: was hardcoded 1,100; now respects difficulty range
+    st.session_state.status = "playing"                    # FIX: reset status so the st.stop() gate below no longer blocks replay
+    st.session_state.score = 0                             # FIX: reset score for a fresh game
+    st.session_state.history = []                          # FIX: clear previous game's guesses
     st.success("New game started.")
     st.rerun()
 

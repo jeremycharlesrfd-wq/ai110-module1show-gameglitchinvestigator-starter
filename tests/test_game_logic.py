@@ -1,4 +1,4 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, get_range_for_difficulty
 
 
 def test_winning_guess():
@@ -28,3 +28,12 @@ def test_string_secret_is_compared_numerically():
     assert check_guess(100, "93") == ("Too High", "📉 Go LOWER!")
     assert check_guess(50, "93") == ("Too Low", "📈 Go HIGHER!")
     assert check_guess(93, "93") == ("Win", "🎉 Correct!")
+
+
+def test_hard_range_is_not_easier_than_normal():
+    # Regression: Hard used to return (1, 50), a narrower range than Normal's
+    # (1, 100), which made Hard easier to guess than Normal. Hard's range must
+    # be at least as wide as Normal's.
+    _, normal_high = get_range_for_difficulty("Normal")
+    _, hard_high = get_range_for_difficulty("Hard")
+    assert hard_high >= normal_high
