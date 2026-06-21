@@ -100,4 +100,4 @@ Next time I will work with AI, I will make sure to separate the different inquir
 
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
 
-This project made me realise that writing code with AI is a bit like driving a car. It can make what you want it to do but you need to indicate specifically what you want. For example, you need to be specific about which file and which lines you want to modify and explain the intent behind that modification.
+This project made me realise that writing code with AI is a bit like driving a car. It can make what you want it to do but you need to indicate specifically what you want. For example, you need to be specific about which file and which lines you want to modify and explain the intent behind that modification.    
