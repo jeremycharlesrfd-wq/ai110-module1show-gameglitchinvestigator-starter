@@ -28,9 +28,9 @@
 
 | Edge Case | Prompt Used | AI-Suggested Test | Did It Pass? | Your Reasoning |
 |-----------|-------------|-------------------|--------------|----------------|
-| | | | | |
-| | | | | |
-| | | | | |
+| Negative numbers | "1- Please verify whether the game can handle those three potential 'edge case' inputs: negative numbers, decimals, or extremely large values. 2- Invalid input should not cost an attempt." | `test_parse_guess_rejects_negative` | PASSED | I chose this edge case because the correct guess is always a number that is constantly between 1 and 100, or between 1 and 20, which means that any number below 1 should be irrelevant for this game. |
+| Decimals | (Same prompt as above.) | `test_parse_guess_rejects_decimals_outright` | PASSED | I chose this edge case because the correct guess is always a whole number, and thus any decimal after the number should be irrelevant. |
+| Extremely large values | (Same prompt as above.) | `test_parse_guess_rejects_extremely_large_values` | PASSED | I chose this edge case because the correct guess never exceeds 100 (or 20 for Easy mode), and thus any values larger than those numbers should be irrelevant. |
 
 ---
 

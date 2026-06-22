@@ -58,10 +58,25 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/test_game_logic.py
-# ========================= 5 passed in 0.01s =========================
+=================================================================== test session starts ====================================================================
+platform darwin -- Python 3.13.7, pytest-9.0.3, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/jeremycharlesrafidimanana/Documents/summer 26/codepath/ICAs/ai110-module1show-gameglitchinvestigator-starter
+plugins: anyio-4.13.0
+collected 10 items                                                                                                                                         
 
+tests/test_game_logic.py::test_winning_guess PASSED                                                                                                  [ 10%]
+tests/test_game_logic.py::test_guess_too_high_tells_player_to_go_lower PASSED                                                                        [ 20%]
+tests/test_game_logic.py::test_guess_too_low_tells_player_to_go_higher PASSED                                                                        [ 30%]
+tests/test_game_logic.py::test_string_secret_is_compared_numerically PASSED                                                                          [ 40%]
+tests/test_game_logic.py::test_hard_range_is_not_easier_than_normal PASSED                                                                           [ 50%]
+tests/test_game_logic.py::test_parse_guess_accepts_valid_in_range PASSED                                                                             [ 60%]
+tests/test_game_logic.py::test_parse_guess_rejects_negative PASSED                                                                                   [ 70%]
+tests/test_game_logic.py::test_parse_guess_rejects_decimals_outright PASSED                                                                          [ 80%]
+tests/test_game_logic.py::test_parse_guess_rejects_extremely_large_values PASSED                                                                     [ 90%]
+tests/test_game_logic.py::test_parse_guess_rejects_non_numbers_and_empty PASSED                                                                      [100%]
+
+==================================================================== 10 passed in 0.01s ====================================================================
 
 ```
 

@@ -9,25 +9,31 @@ def get_range_for_difficulty(difficulty: str):
     return 1, 100
 
 
-def parse_guess(raw: str):
+def parse_guess(raw: str, low: int = 1, high: int = 100):
     """
-    Parse user input into an int guess.
+    Parse user input into an int guess and validate it against [low, high].
+
+    Decimals (e.g. "3.7") are rejected outright rather than truncated, so the
+    player always knows exactly which number was scored.
 
     Returns: (ok: bool, guess_int: int | None, error_message: str | None)
     """
     if raw is None:
         return False, None, "Enter a guess."
 
+    raw = raw.strip()
     if raw == "":
         return False, None, "Enter a guess."
 
     try:
-        if "." in raw:
-            value = int(float(raw))
-        else:
-            value = int(raw)
+        # int() rejects decimals and scientific notation, so "3.7" / "1e9"
+        # fall through to the error message below instead of being truncated.
+        value = int(raw)
     except Exception:
-        return False, None, "That is not a number."
+        return False, None, "Enter a whole number."
+
+    if not (low <= value <= high):
+        return False, None, f"Out of range. Pick a number from {low} to {high}."
 
     return True, value, None
 
